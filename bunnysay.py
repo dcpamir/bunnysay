@@ -109,13 +109,14 @@ def get_output_string(emote, text):
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument("--emote", default="bored", help="choose different emote for bunny")
-    parser.add_argument("text", nargs="*", default="Default Text")
+    parser.add_argument("-e", "--emote", default="happy", help="choose different emote for bunny")
+    parser.add_argument("text", nargs="*", default="Hello World")
     args=parser.parse_args()
     if args.emote in emote_dictionary.keys():
         get_output_string(args.emote,args.text)
     else:
-        print(list(emote_dictionary.keys()))
+        print("Available emote options:",", ".join([keys for keys in emote_dictionary]))
 
 
-main()
+if __name__ == "__main__":
+    main()
