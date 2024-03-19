@@ -102,18 +102,13 @@ def draw(char, text):
     return '\n'.join(output)
 
 
-def get_output_string(emote, text):
-    if emote in emote_dictionary:
-        return draw(emote_dictionary[emote], text)
-
-
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument("-e", "--emote", default="happy", help="choose different emote for bunny")
-    parser.add_argument("text", nargs="*", default="Hello World")
+    parser.add_argument("-e", "--emote", default="happy", help="choose different emote")
+    parser.add_argument("-t", "--text", nargs="*", default="Hello World")
     args=parser.parse_args()
     if args.emote in emote_dictionary.keys():
-        get_output_string(args.emote,args.text)
+        draw(emote_dictionary[args.emote],args.text)
     else:
         print("Available emote options:",", ".join([keys for keys in emote_dictionary]))
 
